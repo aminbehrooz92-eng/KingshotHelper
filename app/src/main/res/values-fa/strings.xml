@@ -1,7 +1,35 @@
 <resources>
-    <string name="app_name">دستیار پیشرفته کینگ‌شات</string>
-    <string name="app_title">Kingshot Helper — حالت پیشرفته</string>
-    <string name="language">زبان:</string>
+    <string name="app_name">دستیار کینگ‌شات</string>
+
+    <string name="alarm">آلارم</string>
+    <string name="stop_alarm">توقف آلارم</string>
+    <string name="cancel">انصراف</string>
+    <string name="activating_shield">در حال فعال‌سازی شیلد…</string>
+    <string name="attack_detected">حمله شناسایی شد!</string>
+    <string name="activate_shield_q">همین حالا شیلد فعال شود؟</string>
+    <string name="activate_shield_2h">فعالسازی شیلد ۲ ساعته</string>
+    <string name="temp_active_note">فعالسازی موقت فعال است</string>
+    <string name="last_status">آخرین وضعیت</string>
+
+    <string name="app_title">دستیار کینگ‌شات</string>
+    <string name="adv_locked">حالت پیشرفته قفل است</string>
+    <string name="minutes_from_now">%1$d دقیقهٔ دیگر</string>
+    <string name="scheduled_in">زمان‌بندی در</string>
+    <string name="schedule_attack">فعالسازی شیلد هنگام حمله</string>
+    <string name="triggered_activation">فعالسازی انجام شد</string>
+    <string name="run_advanced_activation">اجرای فعال‌سازی پیشرفته</string>
+    <string name="language">زبان</string>
+
+    <string name="gate_title">حالت پیشرفته</string>
+    <string name="gate_prompt">رمز ۱۰ رقمی را وارد کنید</string>
+    <string name="gate_pwd_label">رمز</string>
+    <string name="gate_perm_ok">بازگشایی دائمی موفق بود</string>
+    <string name="gate_temp_ok">بازگشایی موقت ۲ ساعته</string>
+    <string name="gate_invalid">رمز نامعتبر است</string>
+    <string name="gate_temp_used">رمز موقت قبلاً استفاده شده</string>
+    <string name="activate">فعال‌سازی</string>
+
+    <string name="notif_channel_name">هشدارهای کینگ‌شات</string>
+    <string name="notif_channel_desc">هشدار حمله/شیلد</string>
     <string name="alarm_active">آلارم فعال است</string>
-    <string name="stop_alarm">توقف</string>
 </resources>
