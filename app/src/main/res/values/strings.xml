@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kingshot Helper</string>
-    <string name="activating_shield">Activating Shield...</string>
-    <string name="stop_alarm">Stop Alarm</string>
+    <string name="activating_shield">Activating shield…</string>
+    <string name="stop_alarm">Stop alarm</string>
 </resources>
