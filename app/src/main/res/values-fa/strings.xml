@@ -1,1 +1,27 @@
-
+<resources>
+    <string name="app_name">دستیار پیشرفته کینگزشات</string>
+    <string name="app_title">Kingshot Helper — حالت پیشرفته</string>
+    <string name="language">زبان:</string>
+    <string name="minutes_from_now">چند دقیقه بعد</string>
+    <string name="schedule_attack">زمان‌بندی شبیه‌سازی حمله</string>
+    <string name="run_advanced_activation">اجرای حالت پیشرفته</string>
+    <string name="scheduled_in">زمان‌بندی شد در %1$d دقیقهٔ آینده</string>
+    <string name="triggered_activation">فعال‌سازی پیشرفته اجرا شد</string>
+    <string name="last_status">آخرین وضعیت: %1$s</string>
+    <string name="attack_detected">حمله شناسایی شد</string>
+    <string name="tap_to_activate">برای فعال‌کردن شیلد ۲ ساعته ضربه بزنید</string>
+    <string name="activate_shield_q">الان شیلد ۲ ساعته فعال شود؟</string>
+    <string name="activate_shield_2h">فعال‌سازی شیلد (۲ ساعت)</string>
+    <string name="cancel">انصراف</string>
+    <string name="activating_shield">درحال فعال‌سازی شیلد…</string>
+    <string name="adv_locked">حالت پیشرفته قفل است. لطفاً برنامه را بسته و دوباره باز کنید و رمز را در دروازه وارد کنید.</string>
+    <!-- Gate -->
+    <string name="gate_title">فعال‌سازی حالت پیشرفته</string>
+    <string name="gate_prompt">رمز ۱۰ رقمی را وارد کنید</string>
+    <string name="gate_pwd_label">رمز ۱۰ رقمی</string>
+    <string name="activate">فعال‌سازی</string>
+    <string name="gate_perm_ok">فعال‌سازی دائمی انجام شد</string>
+    <string name="gate_temp_ok">فعال‌سازی موقت (۲ ساعت) شروع شد</string>
+    <string name="gate_invalid">رمز نادرست است</string>
+    <string name="gate_temp_used">رمز موقت قبلاً استفاده شده است</string>
+</resources>
