@@ -1,5 +1,6 @@
 package com.example.kingshot_helper.ui
 
+import androidx.compose.ui.res.stringResource
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
