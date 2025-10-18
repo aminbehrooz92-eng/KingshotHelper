@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="@color/black"
+    tools:context=".FullscreenTriggerActivity">
 
+    <!-- متن نمایش فعال شدن شیلد -->
     <TextView
-        android:id="@+id/tv_info"
+        android:id="@+id/textActivatingShield"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activating_shield"
         android:textColor="@android:color/white"
-        android:layout_gravity="center"/>
-</FrameLayout>
+        android:textSize="24sp"
+        android:layout_centerInParent="true"
+        android:gravity="center" />
+
+    <!-- دکمه لغو یا متوقف کردن آلارم -->
+    <Button
+        android:id="@+id/btnStopAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stop_alarm"
+        android:layout_below="@id/textActivatingShield"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@android:color/white"
+        android:padding="12dp"
+        android:layout_marginBottom="40dp" />
+
+</RelativeLayout>
