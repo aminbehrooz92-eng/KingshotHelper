@@ -1,1 +1,27 @@
-
+<resources>
+    <string name="app_name">Assistente Avançado Kingshot</string>
+    <string name="app_title">Kingshot Helper — Avançado</string>
+    <string name="language">Idioma:</string>
+    <string name="minutes_from_now">Minutos a partir de agora</string>
+    <string name="schedule_attack">Agendar simulação de ataque</string>
+    <string name="run_advanced_activation">Executar ativação avançada</string>
+    <string name="scheduled_in">Agendado para daqui a %1$d minuto(s)</string>
+    <string name="triggered_activation">Ativação avançada disparada</string>
+    <string name="last_status">Último: %1$s</string>
+    <string name="attack_detected">Ataque detectado</string>
+    <string name="tap_to_activate">Toque para ativar o escudo de 2h</string>
+    <string name="activate_shield_q">Ativar o escudo de 2 horas agora?</string>
+    <string name="activate_shield_2h">Ativar Escudo (2h)</string>
+    <string name="cancel">Cancelar</string>
+    <string name="activating_shield">Ativando escudo…</string>
+    <string name="adv_locked">Modo avançado bloqueado. Reinicie o app e insira a senha no Gate.</string>
+    <!-- Gate -->
+    <string name="gate_title">Ativação do Modo Avançado</string>
+    <string name="gate_prompt">Insira a senha de 10 dígitos</string>
+    <string name="gate_pwd_label">Senha de 10 dígitos</string>
+    <string name="activate">Ativar</string>
+    <string name="gate_perm_ok">Desbloqueio permanente ativado</string>
+    <string name="gate_temp_ok">Desbloqueio temporário (2 horas) iniciado</string>
+    <string name="gate_invalid">Senha inválida</string>
+    <string name="gate_temp_used">Senha temporária já utilizada</string>
+</resources>
