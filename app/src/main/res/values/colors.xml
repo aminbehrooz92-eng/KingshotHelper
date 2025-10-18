@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- رنگ‌های پایه؛ نام‌ها دلخواه‌اند ولی در لایه به همین نام‌ها ارجاع داده می‌شود -->
+    <color name="ks_primary">#2962FF</color>      <!-- آبی پرایمری -->
+    <color name="ks_on_primary">#FFFFFF</color>  <!-- متن روی پرایمری -->
+    <color name="ks_bg">#000000</color>          <!-- پس‌زمینهٔ تیره -->
+</resources>
