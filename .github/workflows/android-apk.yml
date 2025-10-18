@@ -1,31 +1,34 @@
-name: Android APK (no local wrapper)
+name: Android APK Build
 
 on:
-  workflow_dispatch:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Setup JDK 17
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
-      - name: Install Gradle on runner
+      - name: Download latest Gradle
         run: |
-          sudo apt-get update
-          sudo apt-get install -y gradle
+          wget https://services.gradle.org/distributions/gradle-8.7-bin.zip -O gradle.zip
+          unzip -q gradle.zip
+          export PATH=$PWD/gradle-8.7/bin:$PATH
+          gradle -v
 
-      - name: Generate Gradle Wrapper
+      - name: Create Gradle Wrapper (Gradle 8.7)
         run: |
-          gradle --version
-          gradle wrapper
+          gradle wrapper --gradle-version 8.7
           chmod +x gradlew
 
       - name: Build Debug APK
