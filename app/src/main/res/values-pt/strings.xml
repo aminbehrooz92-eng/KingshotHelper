@@ -1,7 +1,35 @@
 <resources>
-    <string name="app_name">Assistente Avançado Kingshot</string>
-    <string name="app_title">Kingshot Helper — Avançado</string>
-    <string name="language">Idioma:</string>
+    <string name="app_name">Kingshot Helper</string>
+
+    <string name="alarm">Alarme</string>
+    <string name="stop_alarm">Parar alarme</string>
+    <string name="cancel">Cancelar</string>
+    <string name="activating_shield">Ativando escudo…</string>
+    <string name="attack_detected">Ataque detectado!</string>
+    <string name="activate_shield_q">Ativar escudo agora?</string>
+    <string name="activate_shield_2h">Ativar escudo de 2h</string>
+    <string name="temp_active_note">Ativação temporária habilitada</string>
+    <string name="last_status">Último status</string>
+
+    <string name="app_title">Kingshot Helper</string>
+    <string name="adv_locked">Modo avançado bloqueado</string>
+    <string name="minutes_from_now">%1$d minutos a partir de agora</string>
+    <string name="scheduled_in">Programado em</string>
+    <string name="schedule_attack">Ativar escudo no ataque</string>
+    <string name="triggered_activation">Ativação disparada</string>
+    <string name="run_advanced_activation">Executar ativação avançada</string>
+    <string name="language">Idioma</string>
+
+    <string name="gate_title">Modo avançado</string>
+    <string name="gate_prompt">Insira a senha de 10 dígitos</string>
+    <string name="gate_pwd_label">Senha</string>
+    <string name="gate_perm_ok">Desbloqueio permanente concluído</string>
+    <string name="gate_temp_ok">Desbloqueio temporário: 2 horas</string>
+    <string name="gate_invalid">Senha inválida</string>
+    <string name="gate_temp_used">Código temporário já usado</string>
+    <string name="activate">Ativar</string>
+
+    <string name="notif_channel_name">Alertas Kingshot</string>
+    <string name="notif_channel_desc">Notificações de ataque/escudo</string>
     <string name="alarm_active">Alarme ativo</string>
-    <string name="stop_alarm">Parar</string>
 </resources>
