@@ -51,7 +51,7 @@ fun AlarmUI(onActivate: ()->Unit, onCancel: ()->Unit) {
         Row {
             Button(onClick = onActivate) { Text(stringResource(id = R.string.activate_shield_2h)) }
             Spacer(Modifier.width(12.dp))
-            OutlinedButton(onClick = onCancel) { Text(stringResource(id = R.string.stop-alarm)) }
+            OutlinedButton(onClick = onCancel) { Text(stringResource(id = R.string.stop_alarm)) }
         }
     }
 }
