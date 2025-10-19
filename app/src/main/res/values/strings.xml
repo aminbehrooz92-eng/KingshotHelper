@@ -1,9 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kingshot Helper</string>
+
     <string name="channel_name">Alarm</string>
-    <string name="channel_desc">Alarm & vibration</string>
+    <string name="channel_desc">Alarm &amp; vibration</string>
+
     <string name="alarm">Alarm</string>
     <string name="stop">Stop</string>
+    <string name="stop_alarm">Stop alarm</string>
+
     <string name="open_game">Open Game</string>
     <string name="activating_shield">Activating shield…</string>
+    <string name="activate_shield_q">Activate shield now?</string>
+    <string name="activate_shield_2h">Activate 2h shield</string>
+
+    <string name="gate_prompt">Enter password</string>
+    <string name="gate_title">Advanced Mode</string>
+    <string name="gate_pwd_label">Password</string>
+    <string name="gate_perm_ok">Permission granted</string>
+    <string name="gate_temp_ok">Temporary access granted</string>
+    <string name="gate_invalid">Invalid password</string>
+    <string name="gate_temp_used">Temp code already used</string>
+
+    <string name="language">Language</string>
+    <string name="app_title">Kingshot Helper</string>
+    <string name="adv_locked">Advanced mode is locked</string>
+    <string name="minutes_from_now">%1$d minutes from now</string>
+    <string name="scheduled_in">Alarm scheduled in %1$d min</string>
+    <string name="schedule_attack">Schedule alarm</string>
+    <string name="triggered_activation">Alarm triggered</string>
+    <string name="run_advanced_activation">Run advanced activation</string>
+    <string name="temp_active_note">Temporary advanced mode is active</string>
+    <string name="last_status">Last status</string>
+    <string name="attack_detected">Attack detected!</string>
 </resources>
