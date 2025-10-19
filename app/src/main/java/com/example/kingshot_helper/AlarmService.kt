@@ -1,9 +1,7 @@
+// app/src/main/java/com/example/kingshot_helper/AlarmService.kt
 package com.example.kingshot_helper
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.Service
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
@@ -17,125 +15,93 @@ import androidx.core.app.NotificationCompat
 class AlarmService : Service() {
 
     companion object {
-        const val CHANNEL_ID = "kingshot_alarm_channel"
-        const val NOTIF_ID = 1201
-        const val ACTION_START = "kingshot.ACTION_START_ALARM"
-        const val ACTION_STOP = "kingshot.ACTION_STOP_ALARM"
+        const val ACTION_START = "start"
+        const val ACTION_STOP  = "stop"
+        private const val CH_ID = "alarm_channel"
 
-        fun start(context: Context) {
-            val i = Intent(context, AlarmService::class.java).apply { action = ACTION_START }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                context.startForegroundService(i)
-            } else {
-                context.startService(i)
-            }
-        }
-
-        fun stop(context: Context) {
-            val i = Intent(context, AlarmService::class.java).apply { action = ACTION_STOP }
-            context.startService(i)
-        }
+        fun intent(ctx: Context, action: String) =
+            Intent(ctx, AlarmService::class.java).setAction(action)
     }
 
     private var player: MediaPlayer? = null
     private var vibrator: Vibrator? = null
 
-    override fun onCreate() {
-        super.onCreate()
-        vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
-        createChannel()
-    }
-
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        when (intent?.action) {
+    override fun onStartCommand(i: Intent?, flags: Int, startId: Int): Int {
+        when (i?.action) {
             ACTION_START -> startAlarm()
-            ACTION_STOP  -> stopAlarm()
+            ACTION_STOP  -> stopSelf()
         }
         return START_STICKY
     }
 
     private fun startAlarm() {
-        // دکمه STOP در اعلان
-        val stopIntent = Intent(this, AlarmService::class.java).apply { action = ACTION_STOP }
-        val stopPI = PendingIntent.getService(
-            this, 0, stopIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        createChannel()
+
+        val fullIntent = Intent(this, ui.FullScreenAlarmActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        val pi = PendingIntent.getActivity(
+            this, 1, fullIntent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_notification) // یک آیکون برداری در res/drawable بگذارید
-            .setContentTitle(getString(R.string.app_name))
-            .setContentText(getString(R.string.alarm_active))
+        val stopIntent = intent(this, ACTION_STOP)
+        val stopPi = PendingIntent.getService(
+            this, 2, stopIntent, PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val notif = NotificationCompat.Builder(this, CH_ID)
+            .setSmallIcon(R.drawable.ic_notification) // مطمئن شو وجود دارد
+            .setContentTitle(getString(R.string.alarm))
+            .setContentText(getString(R.string.activating_shield))
             .setOngoing(true)
-            .addAction(0, getString(R.string.stop_alarm), stopPI)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
+            .setFullScreenIntent(pi, true)
+            .addAction(0, getString(R.string.stop), stopPi)
             .build()
 
-        startForeground(NOTIF_ID, notification)
+        startForeground(1001, notif)
 
-        // پخش صدا از res/raw/alarm.mp3
-        if (player == null) {
-            player = MediaPlayer.create(this, R.raw.alarm).apply {
-                setAudioAttributes(
-                    AudioAttributes.Builder()
-                        .setUsage(AudioAttributes.USAGE_ALARM)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                        .build()
-                )
-                isLooping = true
-                start()
-            }
-        } else if (player?.isPlaying == false) {
-            player?.start()
+        // پخش صدا
+        player?.release()
+        player = MediaPlayer.create(this, R.raw.alarm).apply {
+            isLooping = true
+            setAudioAttributes(
+                AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .build()
+            )
+            start()
         }
 
-        // ویبرهٔ تکرارشونده
-        try {
-            vibrator?.let { v ->
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    val effect = VibrationEffect.createWaveform(
-                        longArrayOf(0, 600, 400), /* delay, vibrate, pause */
-                        0 /* تکرار از ابتدا */
-                    )
-                    v.vibrate(effect)
-                } else {
-                    @Suppress("DEPRECATION")
-                    v.vibrate(longArrayOf(0, 600, 400), 0)
-                }
-            }
-        } catch (_: Exception) { }
+        // ویبره
+        vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
+        val effect = if (Build.VERSION.SDK_INT >= 26)
+            VibrationEffect.createWaveform(longArrayOf(0, 600, 400), 0)
+        else null
+        if (effect != null) vibrator?.vibrate(effect) else vibrator?.vibrate(600)
     }
 
-    private fun stopAlarm() {
-        try { vibrator?.cancel() } catch (_: Exception) { }
-
-        player?.let { mp ->
-            try { if (mp.isPlaying) mp.stop() } catch (_: Exception) { }
-            try { mp.release() } catch (_: Exception) { }
+    private fun createChannel() {
+        if (Build.VERSION.SDK_INT >= 26) {
+            val nm = getSystemService(NotificationManager::class.java)
+            if (nm.getNotificationChannel(CH_ID) == null) {
+                nm.createNotificationChannel(
+                    NotificationChannel(
+                        CH_ID,
+                        getString(R.string.channel_name),
+                        NotificationManager.IMPORTANCE_HIGH
+                    ).apply { description = getString(R.string.channel_desc) }
+                )
+            }
         }
-        player = null
-
-        stopForeground(STOP_FOREGROUND_REMOVE)
-        stopSelf()
     }
 
     override fun onDestroy() {
-        stopAlarm()
+        player?.stop(); player?.release(); player = null
+        vibrator?.cancel(); vibrator = null
         super.onDestroy()
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
-
-    private fun createChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val mgr = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-            if (mgr.getNotificationChannel(CHANNEL_ID) == null) {
-                val ch = NotificationChannel(
-                    CHANNEL_ID,
-                    "Kingshot Alarm",
-                    NotificationManager.IMPORTANCE_HIGH
-                )
-                mgr.createNotificationChannel(ch)
-            }
-        }
-    }
 }
