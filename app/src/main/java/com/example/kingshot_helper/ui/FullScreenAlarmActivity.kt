@@ -1,4 +1,3 @@
-// app/src/main/java/com/example/kingshot_helper/ui/FullScreenAlarmActivity.kt
 package com.example.kingshot_helper.ui
 
 import android.os.Bundle
