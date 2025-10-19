@@ -1,4 +1,3 @@
-// app/src/main/java/com/example/kingshot_helper/AlarmService.kt
 package com.example.kingshot_helper
 
 import android.app.*
