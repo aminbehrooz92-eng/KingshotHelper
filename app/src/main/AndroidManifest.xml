@@ -1,4 +1,3 @@
-<!-- app/src/main/AndroidManifest.xml -->
 <manifest ...>
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
